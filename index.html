@@ -6,34 +6,51 @@
     <meta name="description" content="Jacopo Ganapini – Graphic designer freelance. Logo, branding, siti web e direzione artistica. Casina (RE)">
     <title>Jacopo Ganapini | Graphic Designer</title>
 
+    <!-- Ottimizzazione Font Loading con preconnect e preload (Miglioramento #4) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Caveat:wght=700&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-
+        
+    <!-- Favicon J + scotch -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23f5e8c7'/><path d='M20 15 L80 15 L70 35 L30 35 Z' fill='%23e8d9b0' opacity='0.6'/><text x='50' y='68' font-family='Caveat,cursive' font-size='62' text-anchor='middle' fill='%23000'>J</text></svg>" type="image/svg+xml">
+    
+    <!-- Script di Font Awesome per le icone della Navigazione Mobile -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" xintegrity="sha512-RIT8MDX4rS0mYc5kX+Qv4z5z25I/6Z09qG2I2Y43/T6Vn8x/J2d1n9sT5q6p5f5o2z5/z2/8/5/8=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <style>
         /* CSS Variables */
         :root {
-            --color-light: rgb(240, 240, 240);
-            --color-paper: #fff;
-            --color-dark: #000;
-            --color-dark-hover: rgb(50, 50, 50);
-            --color-accent-paper: #f5e8c7;
-            --color-accent-tape-shade: #e8d9b0;
-            --nav-bg-dark: rgba(0, 0, 0, 0.95);
-            --nav-transition: 0.3s ease-out; /* Transizione più rapida per lo smart header */
-            scroll-behavior: smooth;
+            --color-light: rgb(240, 240, 240); 
+            --color-paper: #fff; 
+            --color-dark: #000; 
+            --color-dark-hover: rgb(50, 50, 50); 
+            --color-accent-paper: #f5e8c7; 
+            --color-accent-tape-shade: #e8d9b0; 
+            --nav-bg-dark: rgba(0, 0, 0, 0.95); 
+            --nav-transition: 0.3s ease-out; 
+            scroll-behavior: smooth; 
         }
         *{margin:0;padding:0;box-sizing:border-box;}
         body{
+            /* Sfondo a quadretti sottile */
             background:var(--color-light) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect width="400" height="400" fill="%23f0f0f0"/><path d="M0,100 Q100,0 200,100 T400,100" stroke="%23000" stroke-width="1" fill="none" opacity="0.07"/></svg>') repeat;
             background-attachment: fixed;
             font-family:'Inter', sans-serif;
             color:var(--color-dark);
             line-height:1.45;
-            overflow-x:hidden;
-            visibility: hidden; /* Nascondi prima del caricamento per evitare FOUC */
+            visibility: hidden; 
+        }
+
+        /* ------------------ EFFETTO TREMORE (WIGGLE) ------------------ */
+        @keyframes subtleWiggle {
+            0% { transform: translate(0.5px, 0) rotate(0.1deg); }
+            50% { transform: translate(-0.5px, 0.5px) rotate(-0.1deg); }
+            100% { transform: translate(0.5px, 0) rotate(0.1deg); }
+        }
+        
+        .wiggle {
+            animation: subtleWiggle 1s ease-in-out infinite alternate;
         }
 
         /* OVERLAY DI CARICAMENTO */
@@ -43,8 +60,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--color-accent-paper);
-            z-index: 10000;
+            background-color: var(--color-accent-paper); 
+            z-index: 10000; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -59,7 +76,7 @@
             visibility: hidden;
             pointer-events: none;
         }
-
+                
         .loader-text {
             font-family: 'Caveat', cursive;
             font-size: 8vw;
@@ -67,38 +84,39 @@
             text-align: center;
             animation: pulse 1.5s infinite alternate;
         }
-
+                
         @keyframes pulse {
             from { opacity: 0.7; transform: scale(0.98); }
             to { opacity: 1; transform: scale(1.02); }
         }
-
-        h1, h2, h3, .tape {
+                
+        h1, h2, h3, .tape, .signature-footer {
             font-family:'Caveat', cursive;
+            /* Miglioramento #4: Effetto matita/tratto doppio */
+            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1), -0.5px -0.5px 0px rgba(0, 0, 0, 0.1);
         }
-
-        /* STILE SECONDARIO: Titolo di Sezione con Linea "a matita" */
+                
+        /* TITOLI DI SEZIONE SKETCH */
         .section-title-sketch {
             font-family: 'Caveat', cursive;
-            font-size: 16vw;
+            font-size: 14vw; 
             letter-spacing: -0.06em;
             line-height: 0.92;
             padding-bottom: 5px;
             margin-bottom: 5vw;
             display: inline-block;
-            text-align: center;
-            border-bottom: 2px dashed var(--color-dark);
-            transform: rotate(var(--r, 0deg));
+            text-align: center; 
+            border-bottom: 2px dashed var(--color-dark); 
+            transform: rotate(var(--r, 0deg)); 
             transition: transform 0.3s ease-in-out;
         }
         .section-title-sketch:hover {
             transform: rotate(var(--r, 0deg)) scale(1.02);
         }
-
-        /* STILE: Allineamento a sinistra per i paragrafi lunghi */
+        
         .text-center {
             text-align: center !important;
-            width: 100%;
+            width: 100%; 
             margin-left: auto;
             margin-right: auto;
         }
@@ -108,23 +126,22 @@
             background-color: var(--color-paper);
             background-image: radial-gradient(rgba(0,0,0,0.01) 1px, transparent 0);
             background-size: 2px 2px;
+                        
             margin: 0 auto;
             max-width: 1400px;
             min-height: 100vh;
-            box-shadow: 0 15px 45px rgba(0,0,0,0.25);
-            transform: rotate(-0.5deg);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.25); 
+            transform: rotate(-0.5deg); 
             position: relative;
-            z-index: 10;
+            z-index: 10; 
             border-radius: 4px;
-            overflow: hidden;
-            /* Aggiunto transizione per effetto sollevamento */
+            overflow: hidden; 
             transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.4, 1), box-shadow 0.6s cubic-bezier(0.2, 0.8, 0.4, 1);
         }
 
-        /* Effetto Sollevamento Pagina in Hover */
-        #page-wrapper:hover {
-            transform: rotate(-0.6deg) scale(1.002);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+        #page-wrapper:hover { 
+            transform: rotate(-0.6deg) scale(1.002); 
+            box-shadow: 0 30px 70px rgba(0,0,0,0.35); 
         }
 
         /* Effetto Bordo Strappato (Torn Edge) */
@@ -134,54 +151,44 @@
             position: absolute;
             left: 0;
             width: 100%;
-            height: 20px;
+            height: 20px; 
             background-image: radial-gradient(circle at 10px -5px, transparent 10px, var(--color-paper) 10px);
             background-size: 20px 20px;
-            z-index: 15;
+            z-index: 15; 
             pointer-events: none;
         }
         #page-wrapper::before {
             top: 0;
-            transform: translateY(-50%) rotate(-0.5deg);
+            transform: translateY(-50%) rotate(-0.5deg); 
         }
+                
         #page-wrapper::after {
             bottom: 0;
             background-image: radial-gradient(circle at 10px 25px, transparent 10px, var(--color-paper) 10px);
-            transform: translateY(50%) rotate(-0.5deg);
+            transform: translateY(50%) rotate(-0.5deg); 
         }
-
-        @media (max-width: 767px) {
-            #page-wrapper::before,
-            #page-wrapper::after {
-                display: none;
-            }
-            #page-wrapper:hover {
-                transform: none;
-                box-shadow: none;
-            }
-        }
-
+        
         main {
             padding-top: 60px;
             padding-left: 0;
             padding-right: 0;
             padding-bottom: 0;
-            transform: rotate(0.5deg);
+            transform: rotate(0.5deg); 
             role: "main";
         }
-
+                
         .page{
             min-height:80dvh;
-            padding:10dvh 5dvw;
+            padding:10dvh 5vw;
             display:flex;
             align-items:center;
             justify-content:center;
             flex-direction:column;
             position:relative;
         }
-        .page:first-child{
-            min-height:100dvh;
-        }
+        .page:first-child{ 
+             min-height:100dvh; 
+         }
         .content{
             position:relative;
             z-index:2;
@@ -192,38 +199,45 @@
         /* SCROLL REVEAL LOGIC */
         .anim-item{
             opacity:0;
-            transform:translateY(50px) rotate(var(--r,0deg));
-            transition: none;
+            transform:translateY(30px) rotate(var(--r,0deg)) scale(0.98); 
         }
         .anim-item.is-visible {
             will-change: transform, opacity;
-            animation:fadeUp 0.9s ease-out forwards;
+            /* Utilizzo della variabile CSS per il delay dinamico */
+            animation:fadeUp 1.0s cubic-bezier(0.2, 0.8, 0.4, 1) forwards; 
+            animation-delay: var(--delay, 0ms);
         }
         @keyframes fadeUp{
-            to{opacity:1;transform:translateY(0) rotate(var(--r,0deg));}
+            to{opacity:1;transform:translateY(0) rotate(var(--r,0deg)) scale(1);}
         }
-
+                
+        /* STILE "TAPE" - Nastro Adesivo */
         .tape{
             background:linear-gradient(90deg,var(--color-accent-paper) 0%,var(--color-accent-tape-shade) 40%,var(--color-accent-paper) 100%),
                         url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="rgba(0,0,0,0.03)"/></svg>') center/20px 20px;
             padding:20px 40px 26px;
             display:inline-block;
-            box-shadow:0 8px 25px rgba(0,0,0,0.25);
-            transform:rotate(var(--r,-2deg));
+            box-shadow:0 8px 25px rgba(0,0,0,0.25); 
+            transform:rotate(var(--r,-2deg)); 
             margin:30px 15px;
             position:relative;
             max-width:95%;
             transition:transform .4s cubic-bezier(.2,.8,.4,1), box-shadow .4s;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
+            cursor: pointer; 
+            text-decoration: none; 
+            color: inherit; 
         }
-        .tape:hover{
-            transform:rotate(var(--r,-2deg)) translateY(-8px) scale(1.02);
-            box-shadow:0 18px 45px rgba(0,0,0,0.35);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        
+        /* A11y: L'effetto hover/focus-visible deve essere identico per coerenza */
+        .tape:hover, .tape:focus-visible {
+            transform:rotate(var(--r,-2deg)) translateY(-8px) scale(1.02); 
+            box-shadow:0 18px 45px rgba(0,0,0,0.35); 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
+            outline: 3px dashed var(--color-dark); /* Focus coerenza A11y */
+            outline-offset: 4px;
+            border-radius: 4px; 
         }
-
+                
         /* Effetto al click/touch (Crumple effect) */
         .tape.tape-clicked {
             animation: tapeTwitch 0.2s ease-in-out;
@@ -236,6 +250,7 @@
             100% { transform: translate(0, 0) rotate(var(--r,-2deg)); }
         }
 
+        /* Code del nastro adesivo (forme trapezoidali) */
         .tape::before,.tape::after{
             content:'';
             position:absolute;
@@ -245,56 +260,60 @@
             top:-10px;
             clip-path:polygon(0 0,100% 0,85% 100%,15% 100%);
             opacity:0.9;
-            pointer-events: none;
+            pointer-events: none; 
         }
         .tape::before{left:20px;transform:rotate(-8deg);}
         .tape::after{right:20px;transform:rotate(8deg);}
-
+                
         .tape.black{
             background:var(--color-dark);
-            color:var(--color-paper);
+            color:var(--color-paper); 
         }
-        .tape.white{background:var(--color-paper);color:var(--color-dark);}
-        .tape.small{padding:14px 30px 18px;max-width:80%;}
+        
+        /* Aggiungo l'effetto tremore ai titoli principali */
+        h1.wiggle, h2.wiggle, h3.wiggle { 
+            display: inline-block; /* Necessario per l'animazione */
+        }
 
         h1{font-size:15vw;letter-spacing:-.06em;line-height:.92;}
         h2{font-size:16vw;letter-spacing:-.06em;line-height:.92;}
         h3{font-size:12vw;letter-spacing:-.04em;line-height:.96;}
-
-        /* Immagini Progetto */
+                
+        /* Immagini Progetto (effetto polaroid/schizzo) */
         .project-img{
             max-width:100%;
             border:5vw solid var(--color-paper);
-            box-shadow:0 12px 30px rgba(0,0,0,0.35);
-            transform:rotate(2.5deg);
+            box-shadow:0 12px 30px rgba(0,0,0,0.35); 
+            transform:rotate(var(--r, 2.5deg));
             margin:12vw auto;
             border-radius:4px;
-            display: block;
-            /* Aggiunto transizione per ombra dinamica */
+            display: block; 
             transition: transform 0.4s ease, box-shadow 0.4s ease;
+            max-height: 80vh; 
+            object-fit: contain; 
         }
-
+                
         /* Ombra Dinamica in Hover */
         .project-img:hover {
             transform: rotate(var(--r, 2.5deg)) translateY(-4px) scale(1.01);
-            /* Ombra più ampia e morbida per maggiore profondità */
-            box-shadow: 0 25px 50px rgba(0,0,0,0.45);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.45); 
         }
-
-        /* Blocco Descrizione Progetto (simula un Post-It o Nota) */
+                
+        /* Blocco Descrizione Progetto (simula un Post-It) */
         .project-note-card {
-            background-color: var(--color-accent-paper);
+            background-color: var(--color-accent-paper); 
             padding: 8vw 6vw;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
             margin: 8vw auto;
             max-width: 95%;
             border-radius: 4px;
-            transform: rotate(var(--r, -1.5deg));
-            text-align: left;
+            transform: rotate(var(--r, -1.5deg)); 
+            text-align: left; 
             transition: transform 0.4s ease;
+            font-size: 5.4vw; 
         }
-        .project-note-card:hover {
-            transform: rotate(var(--r, -1.5deg)) scale(1.01);
+        .project-note-card:hover { 
+             transform: rotate(var(--r, -1.5deg)) scale(1.01);
         }
 
         /* Placeholder styling in caso di errore di caricamento immagine */
@@ -307,155 +326,178 @@
             justify-content: center;
             color: #777;
             font-size: 1.2rem;
+            text-align: center; 
         }
-
-        /* Link styling */
+                
+        /* Link styling (grande con linea di matita sotto) */
         .large-link{
-            color:var(--color-dark);
+            color:var(--color-dark); 
             border-bottom:4px solid var(--color-dark);
             font-size:7.5vw;
             padding:8px 0;
             display:inline-block;
-            /* Aggiunto colore testo e bordo alla transizione */
             transition:border .2s, color .2s, border-color .2s;
-            text-decoration: none;
+            text-decoration: none; 
             cursor: pointer;
         }
-
-        /* Feedback Colore Link */
         .large-link:hover{
             border-bottom-width:9px;
-            color: var(--color-dark-hover);
+            color: var(--color-dark-hover); 
             border-color: var(--color-dark-hover);
         }
-
-        /* STILI: Contatti */
-        .contact-link {
-            border-bottom: 1px dashed #ccc;
-            padding: 12px 0;
-            margin: 0;
+                
+        /* STILI: Contatti */        
+        #contatti .content {
             display: flex;
+            flex-direction: column;
+            align-items: center; 
+            text-align: center; 
+        }
+        
+        #contatti .contact-card {
+            padding: 10vw 5vw; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
+            margin: 10vw auto; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--color-paper);
+            border: 2px solid var(--color-dark); 
+            max-width: 450px; 
+            width: 95%;
+            border-radius: 8px;
+            transform: rotate(var(--r, -1deg));
+            transition: transform 0.4s;
+            text-align: center; 
+        }
+        #contatti .contact-card:hover {
+            transform: rotate(var(--r, -1deg)) scale(1.02);
+        }
+        
+        .contact-link {
+            border-bottom: 1px dashed #ccc; 
+            padding: 15px 0; 
+            margin: 5px 0; 
+            display: flex; 
             align-items: center;
             text-decoration: none;
             transition: opacity 0.3s, transform 0.3s;
             cursor: pointer;
             line-height: 1.1;
+            color: inherit;
+            width: 100%; 
+            justify-content: center; 
+            font-size: 6vw; 
         }
-
-        /* Micro-Animazione Icone e Link */
         .contact-link:hover {
             opacity: 0.9;
-            transform: translateX(4px);
+            transform: translateX(4px); 
         }
-
         .contact-link svg {
-            margin-right: 12px;
-            min-width: 6vw;
+            margin-right: 15px; 
+            min-width: 6vw; 
             height: 6vw;
-            flex-shrink: 0;
+            flex-shrink: 0; 
             transition: transform 0.3s;
         }
-
-        /* STILI: NAVIGAZIONE SMART (ripristinata) */
+        
+        /* STILI: NAVIGAZIONE SMART (BASE DESKTOP) */
         .sticky-nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: var(--nav-bg-dark);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-            z-index: 9999;
+            background-color: var(--nav-bg-dark); 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); 
+            z-index: 9999; 
             display: flex;
             justify-content: center;
             padding: 10px 5dvw;
-            font-family: 'Inter', sans-serif;
-            transform: translateY(0);
-            will-change: transform;
-            transition: transform var(--nav-transition);
-            display: flex;
+            font-family: 'Inter', sans-serif; 
+            transform: translateY(0); 
+            will-change: transform; 
+            transition: transform var(--nav-transition); 
+            flex-wrap: wrap;
         }
 
-        /* Classe per NASCONDERE: usata per lo scivolamento in alto */
         .sticky-nav.nav-hidden {
-            transform: translateY(-100%);
+            transform: translateY(-100%); 
         }
-        /* Classe per MOSTRARE: usata per lo scivolamento in basso (necessaria solo se il nav non era già a top:0) */
-        .sticky-nav.nav-visible {
-            transform: translateY(0);
-        }
-
         .sticky-nav a {
             color: var(--color-accent-paper);
-            font-size: 1.2rem;
+            font-size: 1.2rem; 
             margin: 0 15px;
             padding: 5px 10px;
-            border-bottom: none;
-            transition: color 0.3s, border-bottom 0.3s, padding-bottom 0.3s;
+            border-bottom: none; 
+            transition: color 0.3s, background-color 0.3s;
             text-decoration: none;
+            display: flex; /* Permette l'uso delle icone */
+            align-items: center;
+            justify-content: center;
         }
-
         .sticky-nav a:hover {
-            color: var(--color-paper);
-            border-bottom: none;
+            color: var(--color-paper); 
         }
-
         .sticky-nav a.active {
-            color: var(--color-dark);
-            background-color: var(--color-accent-paper);
+            color: var(--color-dark); 
+            background-color: var(--color-accent-paper); 
             font-weight: 700;
             border-radius: 4px;
-            box-shadow: 0 0 10px rgba(245, 232, 199, 0.5);
-            padding: 5px 10px;
+            box-shadow: 0 0 10px rgba(245, 232, 199, 0.5); 
+            padding: 5px 10px; 
         }
         .sticky-nav a.active:hover {
             color: var(--color-dark);
-            background-color: var(--color-paper);
+            background-color: var(--color-paper); 
         }
-
         .sticky-nav .logo-link {
             font-family: 'Caveat', cursive;
-            font-size: 1.8rem;
+            font-size: 1.8rem; 
             font-weight: 700;
-            margin-right: auto;
+            margin-right: auto; 
             border: none !important;
             padding-bottom: 5px !important;
-            color: var(--color-accent-paper);
-            display: none;
+            color: var(--color-accent-paper); 
+            display: none; /* Nascosto su mobile (default) */
         }
-        .sticky-nav .logo-link:hover {
-            color: var(--color-paper);
+        .nav-icon {
+            display: none; /* Mostrato solo su mobile */
+            font-size: 1.2rem;
         }
+        .nav-text {
+            display: inline; /* Nascosto solo su mobile */
+        }
+
 
         /* STILI: ACCESSIBILITÀ (Focus Ring Personalizzato) */
         a:focus-visible, button:focus-visible {
             outline: 3px dashed var(--color-dark);
             outline-offset: 4px;
-            border-radius: 4px;
+            border-radius: 4px; 
         }
-        .sticky-nav a:focus-visible {
-            outline: 3px dashed var(--color-paper);
-            outline-offset: 2px;
+        .sticky-nav a:focus-visible { 
+             outline: 3px dashed var(--color-paper); 
+             outline-offset: 2px;
         }
-
-        /* STILI: FOOTER DI CREDITO/FIRMA (Aggiornato) */
+        
+        /* STILI: FOOTER DI CREDITO/FIRMA */
         .signature-footer {
             text-align: center;
             padding: 30px 20px;
             margin-top: 50px;
-            font-size: 1.8rem;
-            color: #333;
+            font-size: 1.8rem; 
+            color: #333; 
             background-color: transparent;
-            font-family: 'Caveat', cursive;
             line-height: 1.2;
         }
         .signature-footer span {
-            font-size: 2.2rem;
+            font-size: 2.2rem; 
             color: #111;
             font-weight: 700;
             display: block;
         }
-
-        /* STILI: SCROLL TO TOP BUTTON (Migliorato) */
+        
+        /* STILI: SCROLL TO TOP BUTTON */
         #scrollToTop {
             position: fixed;
             bottom: 30px;
@@ -463,61 +505,181 @@
             width: 50px;
             height: 50px;
             background-color: var(--color-dark);
-            color: var(--color-accent-paper);
-            border: 2px solid var(--color-dark);
+            color: var(--color-accent-paper); 
+            border: 2px solid var(--color-dark); 
             border-radius: 50%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             cursor: pointer;
-            display: none;
+            display: none; 
             justify-content: center;
             align-items: center;
             opacity: 0.9;
             transition: all 0.2s ease-in-out;
             z-index: 999;
-            transform: scale(1) rotate(0deg);
+            font-size: 24px;
         }
         #scrollToTop:hover {
             opacity: 1;
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.1) rotate(5deg); 
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-            color: var(--color-paper);
+            color: var(--color-paper); 
         }
 
-        /* Media Queries */
+        /* ------------------------------------- */
+        /* MEDIA QUERIES - Ottimizzazione MOBILE */
+        /* ------------------------------------- */
+
+        @media (max-width: 767px) {
+            /* ANNULLA tutti gli effetti di inclinazione, bordo strappato e ombra per il mobile */
+            #page-wrapper {
+                transform: none !important; 
+                box-shadow: none !important; 
+                margin: 0;
+                overflow: visible; 
+            }
+            #page-wrapper::before,
+            #page-wrapper::after {
+                display: none; 
+            }
+            #page-wrapper:hover {
+                  transform: none; 
+                 box-shadow: none;
+            }
+             main {
+                transform: none !important; 
+                padding-top: 55px; /* Spazio per la nav mobile */
+            }
+             /* Layout più compatto */
+            .page{
+                 padding: 8dvh 4vw; 
+            }
+            
+            /* Font Size Mobile Ottimizzato */
+            h1{font-size: 16vw;} 
+            h2{font-size: 16vw;} 
+            h3{font-size: 13vw;}
+            .section-title-sketch {
+                 font-size: 13vw;
+            }
+            .loader-text { font-size: 10vw; }
+            
+            /* Tape */
+            .tape {
+                margin: 20px 0px; 
+                padding: 15px 30px 20px; 
+            }
+            .tape:hover, .tape:focus-visible {
+                transform: rotate(var(--r,-2deg)) scale(1.01); /* Effetto hover ridotto/ottimizzato per touch */
+                box-shadow: 0 12px 30px rgba(0,0,0,0.3); 
+                outline-offset: 2px;
+            }
+
+            /* Progetti */
+            .project-img {
+                border: 2.5vw solid var(--color-paper); 
+                margin: 8vw auto;
+                max-width: 90%; /* Limita l'immagine per bordi più puliti */
+                box-shadow: 0 8px 20px rgba(0,0,0,0.3); 
+            }
+            .project-img:hover {
+                 transform: rotate(var(--r, 2.5deg)) scale(1.01); 
+            }
+            
+            /* Note Card/Post-It */
+            .project-note-card {
+                padding: 6vw 4vw;
+                font-size: 4.5vw;
+                line-height: 1.5;
+            }
+
+            /* Link Grande (CTA) */
+            .large-link {
+                font-size: 6.5vw;
+                border-bottom-width: 3px;
+            }
+            .large-link:hover {
+                border-bottom-width: 6px;
+            }
+            
+            /* Contatti Mobile */
+            .contact-link {
+                font-size: 5vw; 
+                padding: 12px 0; 
+            }
+            .contact-link svg {
+                min-width: 6vw; 
+                height: 6vw;
+            }
+            
+            /* Navigazione */
+            .sticky-nav {
+                padding: 8px 1dvw;
+                justify-content: space-around;
+            }
+            .sticky-nav a {
+                font-size: 4vw; 
+                margin: 5px 6px; 
+            }
+            .signature-footer {
+                font-size: 1.4rem;
+                padding-bottom: 80px; 
+            }
+        }
+        
+        /* ------------------------------------- */
+        /* MEDIA QUERIES - Mobile Molto Stretto */
+        /* ------------------------------------- */
+        @media (max-width: 480px) {
+            .nav-text {
+                display: none; /* Nasconde il testo */
+            }
+            .nav-icon {
+                display: block; /* Mostra l'icona */
+                font-size: 1.4rem; /* Icona leggermente più grande */
+            }
+            .sticky-nav a {
+                padding: 8px 10px;
+                margin: 0 3px; 
+                font-size: 1.4rem; /* per l'icona */
+                min-width: 44px; /* Aumenta l'area di tocco (touch target) */
+                min-height: 44px;
+            }
+            .sticky-nav {
+                padding: 5px 2px;
+            }
+        }
+
+
+        /* ------------------------------------- */
+        /* MEDIA QUERIES - Desktop (Ripristino) */
+        /* ------------------------------------- */
         @media (min-width:768px){
             #page-wrapper {
-                box-shadow: 0 25px 60px rgba(0,0,0,0.25);
-                padding: 0 20px;
+                box-shadow: 0 25px 60px rgba(0,0,0,0.25); 
+                 padding: 0 20px; 
             }
             main {
-                padding-top: 60px;
+                padding-top: 60px; 
             }
-            h1{font-size:6.8rem;}
-            h2{font-size:7.8rem;}
+            h1{font-size:6.8rem;} 
+            h2{font-size:7.8rem;} 
             h3{font-size:5.6rem;}
-
             .loader-text { font-size: 4rem; }
-
             .section-title-sketch {
                 font-size: 6.5rem;
                 margin-bottom: 60px;
             }
-
             .tape{padding:24px 80px 32px;margin:40px 30px;max-width:none; box-shadow:0 12px 35px rgba(0,0,0,0.25);}
             .tape::before,.tape::after{width:50px;height:32px;top:-14px;}
-            .tape::before{left:40px;}
+            .tape::before{left:40px;} 
             .tape::after{right:40px;}
             .tape.small{padding:16px 56px;}
-
-            .project-img{border:24px solid var(--color-paper);margin:80px auto;max-width:600px; transform:rotate(1.5deg); box-shadow:0 18px 45px rgba(0,0,0,0.35);}
-
-            /* Ombra Dinamica Desktop */
+            
+            .project-img{border:24px solid var(--color-paper);margin:80px auto;max-width:600px; transform:rotate(var(--r, 1.5deg)); box-shadow:0 18px 45px rgba(0,0,0,0.35);}
             .project-img:hover {
                 transform: rotate(var(--r, 1.5deg)) translateY(-8px) scale(1.02);
-                box-shadow: 0 35px 80px rgba(0,0,0,0.45);
+                box-shadow: 0 35px 80px rgba(0,0,0,0.45); 
             }
-
-            /* Dimensioni Desktop per la nota progetto */
             .project-note-card {
                 max-width: 500px;
                 padding: 40px 30px;
@@ -525,157 +687,130 @@
                 margin: 40px auto;
                 box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             }
-
             .large-link{font-size:3.2rem;border-bottom-width:6px;}
             .large-link:hover{border-bottom-width:11px;}
-
+            
             /* Contatti Desktop */
+            #contatti .contact-card {
+                max-width: 500px;
+                padding: 40px; 
+                margin: 60px auto; 
+            }
             .contact-link {
-                font-size: 1.8rem;
-                padding: 10px 0;
-                margin: 15px 0;
-                justify-content: flex-start;
+                font-size: 1.2rem; 
+                padding: 15px 0;
+                margin: 5px 0; 
+                justify-content: center; 
             }
             .contact-link svg {
-                width: 28px;
-                height: 28px;
+                width: 24px; 
+                height: 24px;
                 margin-right: 20px;
+                min-width: 24px; 
             }
-
+            
+            /* Navigazione Desktop */
             .sticky-nav a {
                 font-size: 1.4rem;
-            }
-
-            /* Logo style for desktop */
+            } 
             .sticky-nav .logo-link {
-                display: block;
+                display: block; 
                 font-size: 2.2rem;
                 margin-right: 40px;
             }
+            .nav-icon {
+                display: none;
+            }
+            .nav-text {
+                display: inline;
+            }
+            
             .signature-footer {
-                font-size: 2.2rem;
+                font-size: 2.2rem; 
             }
             .signature-footer span {
-                font-size: 3.0rem;
-            }
-        }
-
-        /* Mobile adjustment for navigation links and wrapper */
-        @media (max-width: 767px) {
-            #page-wrapper {
-                transform: none;
-                box-shadow: none;
-                margin: 0;
-            }
-            main {
-                transform: none;
-                padding-top: 50px;
-            }
-
-            /* Navigazione: Aumenta la spaziatura e riduci il bordo attivo */
-            .sticky-nav {
-                flex-wrap: wrap;
-                padding: 5px 2dvw;
-            }
-            .sticky-nav a {
-                font-size: 4.5vw;
-                margin: 5px 10px;
-            }
-            .sticky-nav a.active {
-                padding: 4px 8px;
-            }
-
-            /* Contenuto: Riduzione generale del padding verticale */
-            .page {
-                padding: 5dvh 5dvw;
-            }
-
-            /* Immagini: Riduci il bordo della "carta" intorno */
-            .project-img {
-                border: 2.5vw solid var(--color-paper);
-                margin: 8vw auto;
-            }
-
-            /* Contenuto Profilo: Leggibilità mobile */
-            .page#profilo p {
-                font-size: 5.8vw !important;
-                line-height: 1.5 !important;
-            }
-            .page#profilo ul {
-                font-size: 5.4vw !important;
-                line-height: 1.4 !important;
-            }
-
-            /* Contatti: Riduci padding e dimensione testo */
-            #contatti .contact-card {
-                padding: 10vw;
-                margin-top: 10vw;
-            }
-
-            .contact-link {
-                font-size: 5.8vw;
-            }
-            .contact-link svg {
-                min-width: 6vw;
-                height: 6vw;
-            }
-
-            .signature-footer {
-                font-size: 1.2rem;
-            }
-            .signature-footer span {
-                font-size: 1.8rem;
+                font-size: 3.0rem; 
             }
         }
     </style>
 </head>
 <body>
+    
+    <!-- OVERLAY DI CARICAMENTO -->
     <div id="loader-overlay">
         <h3 class="loader-text">Caricamento Portfolio...</h3>
     </div>
 
+    <!-- Navigation Menu Fisso -->
     <nav class="sticky-nav" id="stickyNav" role="navigation" aria-label="Menu Principale">
+        <!-- Logo per Desktop -->
         <a href="#intro" data-section-id="intro" aria-label="Logo Jacopo Ganapini - Torna alla Home" class="logo-link">J</a>
-
-        <a href="#intro" data-section-id="intro" aria-label="Vai alla sezione Home">Home</a>
-        <a href="#bio" data-section-id="bio" aria-label="Vai alla sezione Chi Sono">Chi Sono</a>
-        <a href="#profilo" data-section-id="profilo" aria-label="Vai alla sezione Profilo">Profilo</a>
-        <a href="#progetti" data-section-id="progetti" aria-label="Vai alla sezione Progetti">Progetti</a>
-        <a href="#contatti" data-section-id="contatti" aria-label="Vai alla sezione Contatti">Contatti</a>
+        
+        <!-- Link di Navigazione -->
+        <a href="#intro" data-section-id="intro" aria-label="Vai alla sezione Home">
+            <span class="nav-icon"><i class="fas fa-home"></i></span>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="#bio" data-section-id="bio" aria-label="Vai alla sezione Chi Sono">
+            <span class="nav-icon"><i class="fas fa-user-circle"></i></span>
+            <span class="nav-text">Chi Sono</span>
+        </a>
+        <a href="#profilo" data-section-id="profilo" aria-label="Vai alla sezione Profilo">
+            <span class="nav-icon"><i class="fas fa-graduation-cap"></i></span>
+            <span class="nav-text">Profilo</span>
+        </a>
+        <a href="#progetti" data-section-id="progetti" aria-label="Vai alla sezione Progetti">
+            <span class="nav-icon"><i class="fas fa-paint-brush"></i></span>
+            <span class="nav-text">Progetti</span>
+        </a>
+        <a href="#contatti" data-section-id="contatti" aria-label="Vai alla sezione Contatti">
+            <span class="nav-icon"><i class="fas fa-envelope"></i></span>
+            <span class="nav-text">Contatti</span>
+        </a>
     </nav>
 
+    <!-- WRAPPER PER L'EFFETTO CARTA -->
     <div id="page-wrapper">
         <main role="main">
+
+            <!-- SEZIONE 1: INTRODUZIONE / TITOLO -->
             <div class="page" id="intro"><div class="content">
-                <div class="tape anim-item" style="--r:-4deg" data-delay="0"><h1>PORTFOLIO<br>DESIGN</h1></div>
-                <div class="tape black anim-item" style="--r:2deg" data-delay="150"><h1>JACOPO<br>GANAPINI</h1></div>
-                <a href="#bio" class="large-link anim-item" style="margin-top: 10vw; --r:0deg; font-size: 8vw;" data-delay="300" aria-label="Inizia a esplorare il portfolio, vai alla sezione Chi Sono">INIZIA IL TUO VIAGGIO</a>
+                <!-- La rotazione e il delay sono ora gestiti via JS (setCSSVariables) -->
+                <div class="tape anim-item wiggle" style="--r:-4deg; --delay: 0ms;" data-delay="0"><h1>PORTFOLIO<br>DESIGN</h1></div>
+                <div class="tape black anim-item wiggle" style="--r:2deg; --delay: 150ms;" data-delay="150"><h1>JACOPO<br>GANAPINI</h1></div>
+                                
+                <!-- CTA -->
+                <a href="#bio" class="large-link anim-item" style="margin-top: 10vw; --r:0deg; --delay: 300ms; font-size: 8vw;" data-delay="300" aria-label="Inizia a esplorare il portfolio, vai alla sezione Chi Sono">INIZIA IL TUO VIAGGIO</a>
             </div></div>
 
+            <!-- SEZIONE 2: CHI SONO -->
             <div class="page" id="bio"><div class="content">
-                <div class="tape white anim-item" style="--r:-3deg" data-delay="0"><h2>CIAO!</h2></div>
-                <p class="anim-item" style="font-size:7.8vw;max-width:90%;margin:10vw auto;" data-delay="150">
+                <div class="tape white anim-item wiggle" style="--r:-3deg; --delay: 0ms;" data-delay="0"><h2>CIAO!</h2></div>
+                <p class="anim-item" style="font-size:7.8vw;max-width:90%;margin:10vw auto; --delay: 150ms;" data-delay="150">
                     Sono Jacopo Ganapini, grafico freelance<br>
                     con la passione di trasformare le idee<br>
                     degli altri in qualcosa di concreto e bello.
                 </p>
             </div></div>
 
+            <!-- SEZIONE 3: PROFILO / FORMAZIONE / COMPETENZE / ESPERIENZA -->
             <div class="page" id="profilo"><div class="content">
-                <h2 class="section-title-sketch anim-item" style="--r:1deg" data-delay="0">PROFILO</h2>
-
+                <h2 class="section-title-sketch anim-item wiggle" style="--r:1deg; --delay: 0ms;" data-delay="0">PROFILO</h2>
+                                
                 <div style="display:grid;grid-template-columns:1fr;gap:12vw;margin-top:15vw;">
-
-                    <div class="anim-item" data-delay="150">
-                        <div class="tape black small" style="--r:-1deg">FORMAZIONE</div>
+                                        
+                    <!-- 1. Formazione -->
+                    <div class="anim-item" data-delay="150" style="--delay: 150ms;">
+                        <div class="tape black small wiggle" style="--r:-1deg">FORMAZIONE</div>
                         <p class="text-center" style="margin:6vw 0;">
                             <strong>Scuola Internazionale Comics<br>Reggio Emilia</strong><br>
                             Diploma Graphic Design (2021–2024)
                         </p>
                     </div>
 
-                    <div class="anim-item" data-delay="300">
-                        <div class="tape black small" style="--r:2deg">COMPETENZE</div>
+                    <!-- 2. Competenze -->
+                    <div class="anim-item" data-delay="300" style="--delay: 300ms;">
+                        <div class="tape black small wiggle" style="--r:2deg">COMPETENZE</div>
                         <p class="text-center" style="margin:6vw 0;">
                             <strong>Software Adobe</strong>
                             <ul style="list-style-type: none; padding-left: 0; margin-top: 10px; text-align: center;">
@@ -696,8 +831,9 @@
                         </p>
                     </div>
 
-                    <div class="anim-item" data-delay="450">
-                        <div class="tape black small" style="--r:1deg">ESPERIENZA</div>
+                    <!-- 3. Esperienza -->
+                    <div class="anim-item" data-delay="450" style="--delay: 450ms;">
+                        <div class="tape black small wiggle" style="--r:1deg">ESPERIENZA</div>
                         <p class="text-center" style="margin:6vw 0;">
                             <strong>Officina 48</strong><br>
                             Grafico freelance (2024–oggi)
@@ -706,230 +842,374 @@
                 </div>
             </div></div>
 
+            <!-- SEZIONE 4: PROGETTI - CONTENUTO INIETTATO DA JS (Miglioramento #5) -->
             <div class="page" id="progetti"><div class="content">
-                <div class="tape anim-item" style="--r:2deg" data-delay="0"><h2>PROGETTI<br>IN EVIDENZA</h2></div>
-
-                <div style="margin:15vw 0;">
-                    <div class="tape white anim-item" style="--r:-2deg" data-delay="150"><h3>LE MILLE E UNA PAGINA</h3></div>
-                    <p class="anim-item" style="font-size:6vw;margin:5vw 0;" data-delay="300">Novembre 2024</p>
-                    <img src="https://i.ibb.co/N6dqP2HQ/Screenshot-2025-11-25-alle-17-46-17.jpg"
-                         alt="Immagine progetto Le mille e una pagina"
-                         class="project-img anim-item"
-                         loading="lazy"
-                         style="--r:2.5deg"
-                         data-delay="450"
-                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/f0f0f0/999?text=Immagine+Non+Disponibile'; this.classList.add('error-placeholder');">
-                    <div class="project-note-card anim-item" style="--r:1.8deg; font-size: 5.6vw;" data-delay="600">
-                        Brand identity completa per il Salone del Libro di Castelnovo né Monti.<br>
-                        Logo, palette, pattern, segnaletica, locandine e gadget.
-                    </div>
-                </div>
-
-                <div style="margin:20vw 0;">
-                    <div class="tape white anim-item" style="--r:1.5deg" data-delay="150"><h3>RIGENERAZIONE SITO WEB<br>PODERE ACQUECHIARE</h3></div>
-                    <p class="anim-item" style="font-size:6vw;margin:5vw 0;" data-delay="300">Gennaio – Luglio 2024</p>
-                    <img src="https://i.ibb.co/1tpGMpPp/Screenshot-2025-11-25-alle-17-46-26.jpg"
-                         alt="Immagine progetto Podere Acquechiare"
-                         class="project-img anim-item"
-                         loading="lazy"
-                         style="--r:-2.5deg"
-                         data-delay="450"
-                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/f0f0f0/999?text=Immagine+Non+Disponibile'; this.classList.add('error-placeholder');">
-                    <div class="project-note-card anim-item" style="--r:-1.2deg; font-size: 5.6vw;" data-delay="600">
-                        Restyling completo del sito di un agriturismo a Reggio Emilia.<br>
-                        Nuova direzione artistica, fotografia e sviluppo WordPress.
-                    </div>
-
-                    <p class="anim-item" style="margin:12vw 0;font-size:8.2vw;" data-delay="750">
-                        <a href="https://www.podereacquechiare.com" target="_blank" rel="noopener" class="large-link">→ VISITA IL SITO LIVE</a>
-                    </p>
+                <div class="tape anim-item wiggle" style="--r:2deg; --delay: 0ms;" data-delay="0"><h2>PROGETTI<br>IN EVIDENZA</h2></div>
+                <!-- I PROGETTI VENGONO INIETTATI QUI TRAMITE JAVASCRIPT -->
+                <div id="projects-container">
+                    <!-- Contenuto dinamico... -->
                 </div>
             </div></div>
 
+            <!-- SEZIONE 5: CONTATTI -->
             <div class="page" id="contatti"><div class="content">
-                <h2 class="section-title-sketch anim-item" style="--r:-1deg; font-size:14vw;" data-delay="0">CONTATTAMI</h2>
-
-                <div class="anim-item contact-card" data-delay="150" style="background:var(--color-paper);padding:15vw;box-shadow:0 25px 60px rgba(0,0,0,0.25);margin-top:10vw;display:inline-block;transform:rotate(-1deg);max-width:95%;border-radius:8px; text-align: left; font-size: 9.5vw; line-height: 1.9;">
-
+                <h2 class="section-title-sketch anim-item wiggle" style="--r:-1deg; --delay: 0ms; font-size:14vw;" data-delay="0">CONTATTAMI</h2>
+                                
+                <!-- Card Contatti -->
+                <div class="anim-item contact-card" data-delay="150" style="--r:-1deg; --delay: 150ms;">
+                    
+                    <!-- Link Email con Icona -->
                     <a href="mailto:jacopoganapini9@gmail.com" class="contact-link" aria-label="Invia una mail a jacopoganapini9@gmail.com">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <!-- Icona Email -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
                             <path d="M2.003 5.884L10 9.882c.28.14.58.21.88.21s.6-.07.88-.21l7.997-3.998A2.998 2.998 0 0021 3.003v18c0 1.657-1.343 3-3 3H3c-1.657 0-3-1.343-3-3V6c0-1.657 1.343-3 3-3h18c1.1 0 2 .9 2 2v.884L12 14.882 2.003 5.884zM3 6v13h18V6H3z"/>
                         </svg>
                         jacopoganapini9@gmail.com
                     </a>
-
+                                        
+                    <!-- Link Telefono con Icona -->
                     <a href="tel:+393314121728" class="contact-link" aria-label="Chiama il numero 331 412 1728">
+                        <!-- Icona Telefono -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
                             <line x1="12" y1="18" x2="12" y2="18"/>
                         </svg>
                         331 412 1728
                     </a>
-
-                    <span style="font-size: 6.5vw; display: block; margin-top: 25px; text-align: center; color: #333;">Casina (RE)</span>
+                                        
+                    <span style="font-size: 5vw; display: block; margin-top: 25px; text-align: center; color: #333;">Casina (RE)</span>
                 </div>
             </div></div>
         </main>
     </div>
-    <button id="scrollToTop" aria-label="Torna all'inizio della pagina">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="12 19 12 5"></polyline>
-            <polyline points="5 12 12 5 19 12"></polyline>
-        </svg>
-    </button>
+    <!-- FINE WRAPPER -->
 
-
+    <!-- FOOTER DI CREDITO/FIRMA (Fuori dalla carta) -->
     <footer class="signature-footer">
         <span>Jacopo Ganapini</span>. © 2024.
     </footer>
 
+    <!-- SCROLL TO TOP BUTTON -->
+    <button id="scrollToTop" title="Torna su">↑</button>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const loaderOverlay = document.getElementById('loader-overlay');
-            const body = document.body;
-
-            // 1. GESTIONE DEL CARICAMENTO E FOUC (Flash of Unstyled Content)
-            // Nasconde l'overlay e mostra il body quando la pagina è pronta.
-            function hideLoader() {
-                loaderOverlay.classList.add('hidden');
-                body.style.visibility = 'visible';
+        // --- DATA LAYER (Miglioramento #5) ---
+        const projectsData = [
+            {
+                title: "LE MILLE E UNA PAGINA",
+                description: "Brand identity completa per il Salone del Libro di Castelnovo né Monti.<br>Logo, palette, pattern, segnaletica, locandine e gadget.",
+                images: [
+                    { src: "https://i.ibb.co/N6dqP2HQ/Screenshot-2025-11-25-alle-17-46-17.jpg", alt: "Immagine progetto Le mille e una pagina", rotation: 2.5 }
+                ],
+                link: null,
+                delayStart: 150
+            },
+            {
+                title: "RIGENERAZIONE SITO WEB PODERE ACQUECHIARE",
+                description: "Restyling completo del sito di un agriturismo a Reggio Emilia.<br>Nuova direzione artistica, fotografia e sviluppo WordPress.",
+                images: [
+                    { src: "https://i.ibb.co/1tpGMpPp/Screenshot-2025-11-25-alle-17-46-26.jpg", alt: "Immagine progetto Podere Acquechiare", rotation: -2.5 }
+                ],
+                link: "https://www.podereacquechiare.com",
+                delayStart: 150
+            },
+            {
+                title: "CATALOGO NIKE MERCURIAL",
+                description: "Catalogo Nike dedicato alle scarpe da calcio Mercurial.",
+                images: [
+                    { src: "https://i.ibb.co/mFYxfcDb/Screenshot-2025-12-16-alle-08-47-07.png", alt: "Copertina del Catalogo Nike Mercurial", rotation: 1.5 },
+                    { src: "https://i.ibb.co/9QLbs6V/Screenshot-2025-12-16-alle-08-47-14.png", alt: "Pagina interna 1 del Catalogo Nike Mercurial con layout grafico", rotation: -1.8 },
+                    { src: "https://i.ibb.co/zhd5XqFP/Screenshot-2025-12-16-alle-09-22-40.png", alt: "Pagina interna 2 del Catalogo Nike Mercurial: primo piano sul prodotto", rotation: 2.5 },
+                    { src: "https://i.ibb.co/q3pVmQcQ/Screenshot-2025-12-16-alle-08-47-36.png", alt: "Pagina interna 3 del Catalogo Nike Mercurial con layout grafico", rotation: 2.1 },
+                    { src: "https://i.ibb.co/XxNqJDDd/Screenshot-2025-12-16-alle-09-22-29.png", alt: "Pagina interna 4 del Catalogo Nike Mercurial con layout grafico e prodotto in evidenza", rotation: -0.9 }
+                ],
+                link: null,
+                delayStart: 150
             }
+        ];
+        
+        // Variabili globali e cache degli elementi DOM
+        let lastScrollY = 0;
+        const stickyNav = document.getElementById('stickyNav');
+        const loaderOverlay = document.getElementById('loader-overlay');
+        const scrollToTopButton = document.getElementById('scrollToTop');
+        // I 'anim-item' saranno ricaricati dopo l'iniezione dei progetti
+        let animItems = []; 
+        const tapes = document.querySelectorAll('.tape');
+        
+        // --- FUNZIONI DI INIEZIONE (Miglioramento #5) ---
+        
+        /**
+         * Genera l'HTML per un singolo blocco di progetto.
+         * @param {Object} project - Dati del progetto.
+         * @param {number} baseDelay - Ritardo iniziale per il primo elemento.
+         * @returns {string} Markup HTML del progetto.
+         */
+        function createProjectMarkup(project, baseDelay) {
+            let delayCounter = baseDelay;
+            let imagesMarkup = '';
 
-            // Ritardo per l'effetto visivo del caricamento
-            setTimeout(hideLoader, 500);
+            // Genera le immagini
+            project.images.forEach((img, index) => {
+                const currentDelay = delayCounter + index * 150; // Aumenta il delay per ogni immagine successiva
+                imagesMarkup += `
+                    <img src="${img.src}" 
+                         alt="${img.alt}"
+                         class="project-img anim-item"
+                         loading="lazy"
+                         style="--r:${img.rotation}deg; margin-top: ${index > 0 ? '5vw' : '12vw'}; --delay: ${currentDelay}ms;"
+                         data-delay="${currentDelay}"
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/f0f0f0/999?text=Immagine+Non+Disponibile'; this.classList.add('error-placeholder');">
+                `;
+                delayCounter = currentDelay;
+            });
+            
+            // Incremento il delay finale per l'ultima immagine + post-it
+            delayCounter += 150; 
+            
+            // Genera il link se esiste
+            const linkMarkup = project.link ? `
+                <p class="anim-item" style="margin:12vw 0;font-size:8.2vw; --delay: ${delayCounter + 150}ms;" data-delay="${delayCounter + 150}">
+                    <a href="${project.link}" target="_blank" rel="noopener" class="large-link">→ VISITA IL SITO LIVE</a>
+                </p>
+            ` : '';
 
+            // Restituisce l'intero blocco progetto
+            return `
+                <div style="margin:20vw 0;">
+                    <div class="tape white anim-item wiggle" style="--r:${project.images[0].rotation * -1}deg; --delay: ${baseDelay}ms;" data-delay="${baseDelay}">
+                        <h3>${project.title}</h3>
+                    </div>
+                    ${imagesMarkup}
+                    <div class="project-note-card anim-item" style="--r:${(project.images[0].rotation * -1) - 0.3}deg; --delay: ${delayCounter}ms;" data-delay="${delayCounter}">
+                        ${project.description}
+                    </div>
+                    ${linkMarkup}
+                </div>
+            `;
+        }
 
-            // 2. SCROLL REVEAL (INTERSECTION OBSERVER)
-            const animItems = document.querySelectorAll('.anim-item');
+        /**
+         * Inietta tutti i progetti nell'area designata.
+         */
+        function injectProjects() {
+            const container = document.getElementById('projects-container');
+            if (!container) return;
 
-            const observer = new IntersectionObserver((entries) => {
+            let allProjectsMarkup = '';
+            let currentBaseDelay = 150; // Iniziamo dopo il titolo di sezione (delay 0)
+
+            projectsData.forEach(project => {
+                const markup = createProjectMarkup(project, currentBaseDelay);
+                allProjectsMarkup += markup;
+                
+                // Aggiorna il ritardo base per il progetto successivo in base al numero di elementi
+                currentBaseDelay += 150 + (project.images.length * 150) + 300; 
+            });
+
+            container.innerHTML = allProjectsMarkup;
+            
+            // Ricarica la NodeList di animItems dopo l'iniezione
+            animItems = document.querySelectorAll('.anim-item');
+            
+            // Ricollega l'observer dopo aver iniettato i nuovi elementi
+            setupIntersectionObserver();
+        }
+        
+        // --- FUNZIONI DI BASE AGGIORNATE ---
+
+        /**
+         * Gestisce l'animazione di entrata degli elementi con Scroll Reveal (Intersection Observer).
+         */
+        function setupIntersectionObserver() {
+            // Se c'è già un observer, disconnettilo (utile per re-inizializzazione)
+            if (window.projectObserver) window.projectObserver.disconnect();
+
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.1 // 10% dell'elemento visibile
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    const target = entry.target;
-                    const delay = parseInt(target.getAttribute('data-delay')) || 0;
-
                     if (entry.isIntersecting) {
-                        // Applica la classe dopo il ritardo specificato in data-delay
-                        setTimeout(() => {
-                            target.classList.add('is-visible');
-                            // Smetti di osservare una volta che l'elemento è visibile
-                            observer.unobserve(target);
-                        }, delay);
+                        const element = entry.target;
+                        // Il delay è ora gestito dal CSS variable --delay impostato nell'HTML generato
+                        element.classList.add('is-visible');
+                        observer.unobserve(element);
                     }
                 });
-            }, {
-                // Configurazione: l'elemento deve essere visibile almeno al 10%
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px' // Avvia l'animazione 50px prima della fine del viewport
-            });
+            }, observerOptions);
 
             animItems.forEach(item => {
                 observer.observe(item);
             });
+            window.projectObserver = observer; // Salva l'istanza per la disconnessione
+            
+            // Implementazione del punto 3: IntersectionObserver per la navigazione
+            setupNavObserver();
+        }
+        
+        /**
+         * Implementazione del punto 3: IntersectionObserver per la navigazione attiva.
+         */
+        function setupNavObserver() {
+             const sections = document.querySelectorAll('.page');
+             const navLinks = stickyNav.querySelectorAll('a');
+             
+             // 1. Enforce numerical values using parseFloat()
+             const navHeight = parseFloat(stickyNav.offsetHeight) || 60; 
+             const viewportHeight = parseFloat(window.innerHeight) || 800; 
 
+             // Guard clause: se l'altezza della nav non è valida, usciamo (dovrebbe essere > 0)
+             if (navHeight < 1 || viewportHeight < 100) return;
 
-            // 3. SMART HEADER (Nascondi/Mostra la Navigazione allo Scroll)
-            const nav = document.getElementById('stickyNav');
-            const pageWrapper = document.getElementById('page-wrapper');
-            let lastScrollY = window.scrollY;
+             // 2. Calculate Margins
 
-            // Aggiunge la classe per il logo sui dispositivi non-mobile
-            if (window.innerWidth >= 768) {
-                nav.querySelector('.logo-link').style.display = 'block';
-            }
+             // Top margin: Esclude l'altezza della nav. Deve essere negativo.
+             const topMargin = `-${navHeight}px`;
 
-            window.addEventListener('scroll', () => {
-                const currentScrollY = window.scrollY;
+             // Bottom margin: Contrae il viewport dal basso per creare una zona di rilevamento (1px height)
+             // justo sotto la navbar. La contrazione deve essere (Viewport Height - Nav Height - 1 pixel)
+             const bottomContraction = viewportHeight - navHeight - 1;
+             
+             // Assicurati che la contrazione sia almeno 1px e convertila in stringa negativa con 'px'
+             const bottomMarginValue = Math.max(1, bottomContraction); 
+             const bottomMargin = `-${bottomMarginValue}px`; 
 
-                // Mostra sempre il nav in cima alla pagina
-                if (currentScrollY <= 50) {
-                    nav.classList.remove('nav-hidden');
-                    return;
-                }
+             const navObserverOptions = {
+                 root: null, 
+                 rootMargin: `${topMargin} 0px ${bottomMargin} 0px`, 
+                 threshold: 0 
+             };
 
-                // Nascondi se l'utente scorre in basso
-                if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                    nav.classList.add('nav-hidden');
-                    nav.classList.remove('nav-visible');
-                }
-                // Mostra se l'utente scorre in alto
-                else if (currentScrollY < lastScrollY) {
-                    nav.classList.remove('nav-hidden');
-                    nav.classList.add('nav-visible');
-                }
+             // Controllo di sicurezza: se la stringa contiene NaN, non creare l'Observer.
+             if (navObserverOptions.rootMargin.includes('NaN')) {
+                 console.error("IntersectionObserver: rootMargin contains NaN. Skipping observer setup.");
+                 return;
+             }
 
-                lastScrollY = currentScrollY;
+             // Disconnette il vecchio observer se esiste
+             if (window.navObserver) window.navObserver.disconnect();
 
-                // Aggiorna anche l'attivazione dei link (opzionale, ma utile)
-                updateActiveNavLinks(currentScrollY);
-                toggleScrollToTop(currentScrollY);
-            });
+             window.navObserver = new IntersectionObserver((entries) => {
+                 entries.forEach(entry => {
+                     const targetId = entry.target.id;
+                     const targetLink = stickyNav.querySelector(`[data-section-id="${targetId}"]`);
+                     
+                     if (entry.isIntersecting) {
+                         // Rimuovi 'active' da tutti i link
+                         navLinks.forEach(link => link.classList.remove('active'));
+                         // Aggiungi 'active' solo al link corrente
+                         if(targetLink) targetLink.classList.add('active');
+                     }
+                 });
+             }, navObserverOptions);
 
-
-            // 4. AGGIORNA IL LINK ATTIVO NELLA NAV
-            const sections = document.querySelectorAll('.page');
-            const navLinks = document.querySelectorAll('.sticky-nav a[data-section-id]');
-
-            function updateActiveNavLinks(scrollY) {
-                let currentSectionId = 'intro';
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - nav.offsetHeight - 100;
-                    const sectionBottom = sectionTop + section.offsetHeight;
-
-                    if (scrollY >= sectionTop && scrollY < sectionBottom) {
-                        currentSectionId = section.id;
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('data-section-id') === currentSectionId) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-            updateActiveNavLinks(window.scrollY); // Set iniziale
-
-
-            // 5. SCROLL TO TOP BUTTON
-            const scrollToTopBtn = document.getElementById('scrollToTop');
-
-            // Funzione per mostrare/nascondere il bottone
-            function toggleScrollToTop(scrollY) {
-                if (scrollY > 600) {
-                    scrollToTopBtn.style.display = 'flex';
-                } else {
-                    scrollToTopBtn.style.display = 'none';
-                }
-            }
-
-            // Funzione al click del bottone
-            scrollToTopBtn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-
-            // 6. ANIMAZIONE CLICK DEL TAPE
-            document.querySelectorAll('.tape').forEach(tape => {
-                tape.addEventListener('click', function(e) {
-                    // Previene l'effetto se è un link (come i titoli di sezione che non sono link)
-                    if (e.target.tagName !== 'A' && e.target.closest('a') !== null) {
-                       return;
-                    }
-
-                    // Aggiunge la classe che scatena l'animazione CSS
-                    tape.classList.add('tape-clicked');
-
-                    // Rimuove la classe dopo la durata dell'animazione (0.2s)
+             sections.forEach(section => {
+                 window.navObserver.observe(section);
+             });
+        }
+        
+        /**
+         * Aggiunge l'effetto "click" agli elementi .tape, inclusa la gestione da tastiera (A11y).
+         */
+        function setupTapeEffect() {
+            tapes.forEach(tape => {
+                const activateAnimation = (e) => {
+                    e.currentTarget.classList.add('tape-clicked');
                     setTimeout(() => {
-                        tape.classList.remove('tape-clicked');
+                        e.currentTarget.classList.remove('tape-clicked');
                     }, 200);
-                });
+                };
+                
+                tape.addEventListener('click', activateAnimation);
+                
+                if (tape.tagName === 'A' || tape.tagName === 'BUTTON') {
+                     tape.addEventListener('keydown', (e) => {
+                         if (e.key === 'Enter' || e.key === ' ') {
+                             if (e.key === ' ') e.preventDefault(); 
+                             activateAnimation(e);
+                         }
+                     });
+                 }
             });
+        }
+        
+        /**
+         * Gestisce l'oscillazione dello smart header e la visibilità del pulsante ScrollToTop.
+         */
+        function handleScroll() {
+            const currentScrollY = window.scrollY;
 
+            // Logica per lo Smart Header
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                stickyNav.classList.add('nav-hidden');
+            } else if (currentScrollY < lastScrollY || currentScrollY <= 100) {
+                stickyNav.classList.remove('nav-hidden');
+            }
+            lastScrollY = currentScrollY;
+
+            // Logica per il pulsante Scroll To Top
+            if (currentScrollY > 600) {
+                if (scrollToTopButton.style.display !== 'flex') {
+                    scrollToTopButton.style.display = 'flex';
+                }
+            } else {
+                if (scrollToTopButton.style.display !== 'none') {
+                    scrollToTopButton.style.display = 'none'; // Variabile corretta: scrollToTopButton
+                }
+            }
+        }
+        
+        /**
+         * Funzione che nasconde l'overlay e completa l'inizializzazione al caricamento completo della pagina.
+         */
+        function initPage() {
+            // 1. Iniettare i progetti e ricaricare gli elementi da osservare
+            injectProjects(); 
+            
+            // 2. Rimuove l'overlay di caricamento
+            loaderOverlay.classList.add('hidden');
+            
+            // 3. Rende il body visibile
+            setTimeout(() => {
+                document.body.style.visibility = 'visible';
+            }, 500);
+
+            // 4. Inizializza la navigazione attiva al primo carico 
+            // L'Observer la imposterà, ma per sicurezza, assicuriamo che 'intro' sia attivo
+            const introLink = stickyNav.querySelector('[data-section-id="intro"]');
+            if(introLink && !introLink.classList.contains('active')) {
+                introLink.classList.add('active');
+            }
+        }
+
+        // --- EXECUTION BLOCKS ---
+        
+        // Assegna la variabile CSS --delay per gli elementi statici
+        document.querySelectorAll('[data-delay]').forEach(el => {
+            el.style.setProperty('--delay', `${el.getAttribute('data-delay')}ms`);
         });
+
+        // 1. Inizializzazione degli effetti dinamici che non richiedono i progetti
+        setupTapeEffect();
+
+        // 2. Listener per il pulsante Scroll To Top
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 3. Listener principale per lo scroll
+        window.addEventListener('scroll', handleScroll);
+        
+        // 4. Inizializza la pagina e nasconde il loader (solo dopo che tutte le risorse sono pronte)
+        window.addEventListener('load', initPage);
+        
     </script>
 </body>
 </html>
